@@ -1,11 +1,3 @@
-<%-- 
-    Document   : home
-    Created on : 8 de out. de 2024, 08:34:19
-    Author     : nicolas_lange
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,28 +12,28 @@
         <aside class="sidebar" id="sidebar">
             <div class="logo" id="sidebar-logo">
                 <img src="Image/logo.png" alt="Logo Ocelot">
+                
             </div>
             <nav>
                 <ul>
-                    <li><a href="#"><i class="icon-home"></i> <span class="sidebar-text">Tela Principal</span></a></li>
-                    <li><a href="#"><i class="icon-user"></i> <span class="sidebar-text">Usu√°rios</span></a></li>
-                    <li><a href="#"><i class="icon-tasks"></i> <span class="sidebar-text">Relat√≥rios</span></a></li>
-                    <li><a href="#"><i class="icon-add"></i> <span class="sidebar-text">Criar Usu√°rio</span></a></li>
-                    <li><a href="#"><i class="icon-settings"></i> <span class="sidebar-text">Logout</span></a></li>
+                    <li><a href="#"><img src="logos/iconizer-home.svg" class="icon-image" alt="Home Icon"> <span class="sidebar-text">Tela Principal</span></a></li>
+                    <li><a href="#"><img src="logos/iconizer-users.svg" class="icon-image" alt="User Icon"> <span class="sidebar-text">Usu·rios</span></a></li>
+                    <li><a href="#"><img src="logos/iconizer-painel.svg" class="icon-image" alt="Report Icon"> <span class="sidebar-text">RelatÛrios</span></a></li>
+                    <li><a href="#"><img src="logos/iconizer-addUser.svg" class="icon-image" alt="Create User Icon"> <span class="sidebar-text">Criar Usu·rio</span></a></li>
+                    <li><a href="#"><img src="logos/iconizer-sair.svg" class="icon-image" alt="Logout Icon"> <span class="sidebar-text">Logout</span></a></li>
                 </ul>
             </nav>
         </aside>
 
-        <!-- Bot√£o de abrir/fechar a sidebar -->
+        <!-- Bot„o de abrir/fechar a sidebar -->
         <button class="toggle-button" id="toggleButton">
-            <i class="icon-menu"></i>
+          
         </button>
 
-        <!-- Conte√∫do Principal -->
+        <!-- Conte˙do Principal -->
         <main class="main-content">
             <header class="header">
-                <input type="text" placeholder="Pesquisar tarefa" class="search-bar">
-                
+                <input type="text" placeholder="Pesquisar tarefa" class="search-bar"> 
             </header>
 
             <section class="dashboard">
@@ -50,29 +42,14 @@
                     <button class="add-task-button">Adicionar Tarefa +</button>
                 </div>
 
-                <!-- Bot√µes de Filtro -->
+                <!-- Botıes de Filtro -->
                 <div class="task-filters">
                     <button class="filter-button">Atrasada</button>
                     <button class="filter-button">Em andamento</button>
-                    <button class="filter-button">Conclu√≠da</button>
+                    <button class="filter-button">ConcluÌda</button>
                 </div>
 
-                <!-- Cards de Tarefas -->
-                <div class="task-grid">
-                    <div class="task-card">
-                        <div class="task-header">
-                            <span class="task-title">Manuten√ß√£o</span>
-                            <div class="task-actions">
-                                <button class="edit-button"><i class="icon-edit"></i></button>
-                                <button class="delete-button"><i class="icon-trash"></i></button>
-                            </div>
-                        </div>
-                        <p class="task-description">Fazer a manuten√ß√£o da m√°quina de tecido, problema no rolamento.</p>
-                        <p class="task-date">25/09/2024</p>
-                        <p class="task-owner">Gustavo Franke</p>
-                    </div>
-
-                    <!-- Repetir os cards de tarefa conforme necess√°rio -->
+                
                 </div>
             </section>
         </main>
@@ -81,4 +58,3 @@
     <script src="js/script.js"></script>
 </body>
 </html>
-

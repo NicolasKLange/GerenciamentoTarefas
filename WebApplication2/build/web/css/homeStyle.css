@@ -1,3 +1,4 @@
+/* Estilos globais */
 * {
     margin: 0;
     padding: 0;
@@ -9,30 +10,36 @@ body {
     background-color: #f5f5f5;
 }
 
+/* Layout da página */
 .container {
     display: flex;
 }
 
 .sidebar {
-    width: 60px; 
+    width: 100px; /* Largura padrão quando fechada */
     background-color: #225b5b;
     color: white;
     height: 100vh;
-    padding: 20px;
-    transition: width 0.3s;
+    padding: 10px 10px;
+    transition: width 0.3s; /* Transição suave na largura */
     overflow: hidden;
 }
 
 .sidebar.expanded {
-    width: 250px;
+    width: 250px; /* Largura quando expandida */
 }
 
-.sidebar .logo {
-    display: none;
-}
-
-.sidebar.expanded .logo {
+.sidebar .logo img {
+    width: 50px; /* Tamanho da logo */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-bottom: 20px;
     display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar.expanded .logo img {
+    width: 100px; /* Aumenta o tamanho da logo quando a sidebar está expandida */
 }
 
 .sidebar nav ul {
@@ -41,6 +48,9 @@ body {
 
 .sidebar nav ul li {
     margin: 20px 0;
+    display: flex; /* Adicionado para usar flexbox */
+    justify-content: center; /* Alinha horizontalmente ao centro */
+    align-items: center; /* Alinha verticalmente ao centro */
 }
 
 .sidebar nav ul li a {
@@ -48,19 +58,33 @@ body {
     text-decoration: none;
     font-size: 18px;
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Adicionado para alinhar ícone e texto verticalmente */
+    align-items: center; /* Centraliza o conteúdo do link */
+}
+
+.icon-image {
+    width: 30px; /* Tamanho dos ícones */
+    height: 30px; /* Tamanho dos ícones */
+    transition: width 0.3s, height 0.3s;
+}
+
+.sidebar.expanded .icon-image {
+    width: 35px; /* Tamanho dos ícones quando a sidebar está expandida */
+    height: 35px;
 }
 
 .sidebar nav ul li a .sidebar-text {
-    margin-left: 10px;
+    margin-top: 5px; /* Espaçamento entre ícone e texto */
     opacity: 0;
     transition: opacity 0.3s;
+    white-space: nowrap;
 }
 
 .sidebar.expanded nav ul li a .sidebar-text {
     opacity: 1;
 }
 
+/* Ajustes do conteúdo principal */
 .main-content {
     flex: 1;
     padding: 20px;
@@ -80,13 +104,9 @@ body {
     background-color: #e8e8e8;
 }
 
-.search-button {
-    background-color: #225b5b;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
+.search-button img {
+    width: 20px;
+    height: 20px;
 }
 
 .dashboard-header {
@@ -149,12 +169,10 @@ body {
     gap: 10px;
 }
 
-.task-actions .edit-button,
-.task-actions .delete-button {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
+.task-actions .edit-button img,
+.task-actions .delete-button img {
+    width: 20px;
+    height: 20px;
 }
 
 .task-description {
@@ -167,10 +185,11 @@ body {
     font-size: 12px;
 }
 
+/* Estilos do botão de alternar a sidebar */
 .toggle-button {
     position: absolute;
     top: 20px;
-    left: 65px;
+    left: 65px; /* Ajuste conforme necessário */
     background-color: #225b5b;
     color: white;
     border: none;
@@ -181,5 +200,5 @@ body {
 }
 
 .sidebar.expanded + .toggle-button {
-    left: 255px;
+    left: 255px; /* Mover o botão junto com a sidebar */
 }
