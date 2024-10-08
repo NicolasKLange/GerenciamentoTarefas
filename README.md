@@ -1,0 +1,3 @@
+Website sendo elaborado pela OCELOT, ideal para empresas que estão com problemas para gerenciar as tarefas da sua área de desenvolvimento devido á sua expansão muito recente.
+Tendo que desenvolver uma solução em Java Web para um Sistema de Gerenciamento de Tarefas que
+permitirá a criação, acompanhamento e conclusão de tarefas em um ambiente corporativo.
