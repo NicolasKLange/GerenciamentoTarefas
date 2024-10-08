@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+html, body {
+    height: 100%; 
+    overflow: hidden; 
+}
+
+body {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    font-family: "Oswald", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #F2EEE7;
+    height: 100vh; 
+    overflow: hidden; 
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    text-align: center;
+    color: var(--colorroot);
+    flex: 1; 
+    max-width: 400px; 
+    height: 100%;
+}
+
+.image {
+    flex: 2; 
+    height: 100%;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+article h1 {
+    font-size: 4rem;
+}
+
+article h3 {
+    font-size: 2rem;
+}
+
+form {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    padding: 0.3rem;
+    color: #22656D;
+}
+
+form a {
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
+    color: #22656D;
+}
+
+input {
+    padding: 0.9rem;
+    border: none;
+    border-radius: 0.3rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+}
+
+.submit {
+    color: #22656D;
+    border: 0.1rem #22656D solid;
+    background-color: #F2EEE7;
+    font-family: "Oswald", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.submit:hover {
+    transition: 1s;
+    background-color: #22656D;
+    color: #F2EEE7;
+    border: 0.1rem #F2EEE7 solid;
+}
+
+h1 {
+    color: #22656D;
+}
+
+h3 {
+    color: #22656D;
+}
