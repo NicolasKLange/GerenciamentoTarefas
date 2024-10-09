@@ -1,4 +1,5 @@
-/* Estilos globais */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +8,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #F2EEE7;
 }
 
 /* Layout da página */
@@ -16,30 +17,32 @@ body {
 }
 
 .sidebar {
-    width: 100px; /* Largura padrão quando fechada */
+    width: 100px;
     background-color: #225b5b;
     color: white;
     height: 100vh;
     padding: 10px 10px;
-    transition: width 0.3s; /* Transição suave na largura */
+    transition: width 0.3s;
     overflow: hidden;
+    position: relative;
 }
 
 .sidebar.expanded {
-    width: 250px; /* Largura quando expandida */
+    width: 250px;
 }
 
 .sidebar .logo img {
-    width: 50px; /* Tamanho da logo */
-    height: auto; /* Mantém a proporção da imagem */
-    margin-bottom: 20px;
+    width: 50px;
+    height: auto; 
+    margin-bottom: 100px;
+    margin-top: 50px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
 .sidebar.expanded .logo img {
-    width: 100px; /* Aumenta o tamanho da logo quando a sidebar está expandida */
+    width: 100px;
 }
 
 .sidebar nav ul {
@@ -48,9 +51,9 @@ body {
 
 .sidebar nav ul li {
     margin: 20px 0;
-    display: flex; /* Adicionado para usar flexbox */
-    justify-content: center; /* Alinha horizontalmente ao centro */
-    align-items: center; /* Alinha verticalmente ao centro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sidebar nav ul li a {
@@ -58,23 +61,24 @@ body {
     text-decoration: none;
     font-size: 18px;
     display: flex;
-    flex-direction: column; /* Adicionado para alinhar ícone e texto verticalmente */
-    align-items: center; /* Centraliza o conteúdo do link */
+    flex-direction: column;
+    align-items: center;
 }
 
 .icon-image {
-    width: 30px; /* Tamanho dos ícones */
-    height: 30px; /* Tamanho dos ícones */
+    margin-bottom: 20px;
+    width: 30px;
+    height: 30px;
     transition: width 0.3s, height 0.3s;
 }
 
 .sidebar.expanded .icon-image {
-    width: 35px; /* Tamanho dos ícones quando a sidebar está expandida */
+    width: 35px;
     height: 35px;
 }
 
 .sidebar nav ul li a .sidebar-text {
-    margin-top: 5px; /* Espaçamento entre ícone e texto */
+    margin-top: 5px;
     opacity: 0;
     transition: opacity 0.3s;
     white-space: nowrap;
@@ -84,10 +88,9 @@ body {
     opacity: 1;
 }
 
-/* Ajustes do conteúdo principal */
 .main-content {
     flex: 1;
-    padding: 20px;
+    padding: 100px;
 }
 
 .header {
@@ -97,48 +100,65 @@ body {
 }
 
 .search-bar {
-    width: 80%;
+    width: 60%;
     padding: 10px;
     border: none;
     border-radius: 20px;
-    background-color: #e8e8e8;
-}
-
-.search-button img {
-    width: 20px;
-    height: 20px;
-}
-
-.dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    background-color: white;
+    font-size: 16px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
 .add-task-button {
     background-color: #225b5b;
-    color: white;
+    color: #F2EEE7;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 25px;
     border-radius: 20px;
     cursor: pointer;
+    margin-right: 200px;
+    box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+}
+
+.add-task-button:active {
+    background-color: #F2EEE7;
+    color: #225b5b;
+    border: none;
+    box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.2);
 }
 
 .task-filters {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #F2EEE7;
     margin-bottom: 20px;
 }
 
 .filter-button {
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
-    background-color: #e8e8e8;
+    background-color: #F2EEE7;
     border-radius: 20px;
+    border: 0.2rem #22656D solid;
     cursor: pointer;
+    flex-grow: 1;
+    text-align: center;
+    margin: 0 140px; 
+    font-family: "Oswald", sans-serif;
+    font-size: 20px;
+   
 }
 
+.filter-button:hover {
+    transiton: 2s;
+     box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+/* Grade de tarefas */
 .task-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -147,9 +167,10 @@ body {
 
 .task-card {
     background-color: #225b5b;
-    color: white;
+    color: #F2EEE7;
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
 .task-header {
@@ -169,10 +190,13 @@ body {
     gap: 10px;
 }
 
-.task-actions .edit-button img,
-.task-actions .delete-button img {
-    width: 20px;
-    height: 20px;
+.task-actions .edit-button,
+.task-actions .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
 }
 
 .task-description {
@@ -185,11 +209,10 @@ body {
     font-size: 12px;
 }
 
-/* Estilos do botão de alternar a sidebar */
 .toggle-button {
     position: absolute;
     top: 20px;
-    left: 65px; /* Ajuste conforme necessário */
+    left: 10px;
     background-color: #225b5b;
     color: white;
     border: none;
@@ -200,5 +223,14 @@ body {
 }
 
 .sidebar.expanded + .toggle-button {
-    left: 255px; /* Mover o botão junto com a sidebar */
+    left: 255px;
+}
+
+h2{
+    font-family: "Oswald", sans-serif;
+    font-size: 35px;
+    margin-bottom: 30px;
+    color: #225b5b;
+    margin-top: -20px;
+    margin-left: 20px;
 }

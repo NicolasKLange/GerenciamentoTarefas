@@ -1,6 +1,4 @@
-const sidebar = document.getElementById('sidebar');
-const toggleButton = document.getElementById('toggleButton');
-
-toggleButton.addEventListener('click', function() {
+document.getElementById('toggleButton').addEventListener('click', function() {
+    const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('expanded');
 });
