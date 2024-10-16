@@ -234,3 +234,67 @@ h2{
     margin-top: -20px;
     margin-left: 20px;
 }
+
+/* Estilos para o layout de três colunas */
+.task-lists {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.task-column {
+    flex: 1;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+/* Estilo dos cards de tarefas */
+.task-card {
+    background-color: #225b5b;
+    color: #F2EEE7;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.task-actions .edit-button,
+.task-actions .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.task-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.task-date,
+.task-owner {
+    font-size: 12px;
+}
