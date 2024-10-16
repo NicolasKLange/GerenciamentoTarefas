@@ -298,3 +298,8 @@ h2{
 .task-owner {
     font-size: 12px;
 }
+
+.user-status {
+    font-size: 20px;
+    margin-left: 10px;
+}
