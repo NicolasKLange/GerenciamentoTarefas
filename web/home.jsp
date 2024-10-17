@@ -56,11 +56,10 @@
                                 <input type="text" class="password" name="desc" placeholder="">
 
                                 <label for="atv">Data de inicio</label>
-                                <input type="text" class="atv" name="dataIncio" placeholder="" maxlength="8">
-
+                                <input type="Date" class="atv" name="dataIncio" placeholder="" maxlength="8">
+                                
                                 <label for="atv">Data de termino</label>
-                                <input type="text" class="np" name="DataTermino" placeholder=""  maxlength="8">
-                                <input type="submit" value="Adicionar" class="submit">
+                                <input type="Date" class="np" name="DataTermino" placeholder=""  maxlength="8">
                             </form>
 
                         </dialog>
@@ -120,7 +119,7 @@
         </div>
 
 
-
+        <script src="js/script.js"></script>
         <script>
 
             const buttonTask = document.querySelector("#add-task-button-task");
