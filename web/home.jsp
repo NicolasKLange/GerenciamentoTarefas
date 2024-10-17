@@ -85,6 +85,7 @@
                                 <span class="task-date">18/09/2024</span><br>
                                 <span class="task-owner">Gabriel Melz</span>
                             </div>
+                            
                         </section>
                         
                         <!-- Coluna de tarefas em andamento -->
