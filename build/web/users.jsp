@@ -48,26 +48,33 @@
 
                     <dialog class="Janela-modal">
                         <form action="incluirUsuario.jsp">
-
                             <label for="nm">Nome</label>
-                            <input type="text" class="nm" name="nome" placeholder="Nome">
+                            <input type="text" class="nm" name="nome" placeholder="Nome" required>
 
                             <label for="email">Email</label>
-                            <input type="email" class="email" name="email" placeholder="exemplo@gmail.com">
+                            <input type="email" class="email" name="email" placeholder="exemplo@gmail.com" required>
 
                             <label for="password">Senha</label>
-                            <input type="password" class="password" name="senha" placeholder="Senha">
+                            <input type="password" class="password" name="senha" placeholder="Senha" required>
 
                             <label for="atv">Ativado?</label>
-                            <input type="text" class="atv" name="ativacao" placeholder="true ou false">
+                            <select class="atv" name="ativacao" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
 
-                            <label for="atv">Nivel de Permissao</label>
-                            <input type="text" class="np" name="nvpermissao" placeholder="1,2,3,4">
-
+                            <label for="np">Nível de Permissão</label>
+                            <select class="np" name="nvpermissao"  required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
 
                             <input type="submit" value="Adicionar" class="submit">
                         </form>
-
                     </dialog>
 
                     </div>

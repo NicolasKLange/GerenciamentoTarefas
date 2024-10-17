@@ -33,7 +33,7 @@ body {
 
 .sidebar .logo img {
     width: 50px;
-    height: auto; 
+    height: auto;
     margin-bottom: 100px;
     margin-top: 50px;
     display: block;
@@ -147,15 +147,15 @@ body {
     cursor: pointer;
     flex-grow: 1;
     text-align: center;
-    margin: 0 140px; 
+    margin: 0 140px;
     font-family: "Oswald", sans-serif;
     font-size: 20px;
-   
+
 }
 
 .filter-button:hover {
     transiton: 2s;
-     box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
 /* Grade de tarefas */
@@ -302,4 +302,150 @@ h2{
 .user-status {
     font-size: 20px;
     margin-left: 10px;
+}
+
+
+/* Estilo do modal user*/
+.Janela-modal {
+    background-color: #F2EEE7;
+    color: #225b5b;
+    width: 400px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+    border: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Janela-modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Janela-modal input[type="text"],
+.Janela-modal input[type="email"],
+.Janela-modal input[type="password"] {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.Janela-modal .submit {
+    background-color: #225b5b;
+    color: #F2EEE7;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    box-shadow: 0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.2);
+    transition: 1s;
+    margin-top: 10px;
+}
+
+.Janela-modal .submit:hover {
+    background-color: #F2EEE7;
+    color: #225b5b;
+}
+
+.Janela-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* Estilo do modal tarefa*/
+.Janela-modal-Tarefas {
+    background-color: #F2EEE7;
+    color: #225b5b;
+    width: 400px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+    border: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.Janela-modal-Tarefas form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Janela-modal-Tarefas input[type="text"],
+.Janela-modal-Tarefas input[type="email"],
+.Janela-modal-Tarefas input[type="password"] {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.Janela-modal-Tarefas .submit {
+    background-color: #225b5b;
+    color: #F2EEE7;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    box-shadow: 0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.2);
+    transition: 1s;
+    margin-top: 10px;
+}
+
+.Janela-modal-Tarefas .submit:hover {
+    background-color: #F2EEE7;
+    color: #225b5b;
+}
+
+
+.Janela-modal-Tarefas::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+label{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    font-family: "Oswald", sans-serif;
+}
+
+.nm{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.atv{
+    padding: 10px;
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.np{
+    padding: 10px;
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
 }

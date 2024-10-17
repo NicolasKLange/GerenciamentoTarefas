@@ -21,7 +21,7 @@
        u.setSenha_usuario(request.getParameter("senha"));
        
       if (u.verificarUsuario() != null) {
-              response.sendRedirect("homeAdmin.jsp");
+              response.sendRedirect("home.jsp");
           }else{
               response.sendRedirect("index.html");
            }

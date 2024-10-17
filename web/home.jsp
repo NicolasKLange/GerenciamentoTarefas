@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/homeStyle.css">
     </head>
     <body>
+
         <div class="container">
             <!-- Barra Lateral -->
             <aside class="sidebar" id="sidebar">
@@ -17,6 +18,8 @@
                     <button class="toggle-button" id="toggleButton">   
                         ☰
                     </button>
+
+
                 </div>
                 <nav>
                     <ul>
@@ -27,115 +30,108 @@
                     </ul>
                 </nav>
             </aside>
+
+            <!-- Conteúdo Principal -->
             <main class="main-content">
-              <section class="dashboard">
+
+
+                <section class="dashboard">
                     <div class="dashboard-header">
                         <h2>Dashboard de Tarefas</h2>
                     </div>
-                  
-                    <!--Botão para adicionar tarefa-->
                     <header class="header">
                         <input type="text" placeholder="Pesquisar tarefa" class="search-bar"> 
-                        <button class="add-task-button">Adicionar Tarefa  +</button>        
+                        <button class="add-task-button" id="add-task-button-task">Adicionar Tarefa  +</button>
+
+                        <dialog class="Janela-modal-Tarefas">
+                            <form action="IncluirTarefas.jsp">
+
+                                <label for="nm">Tipo da tarefa</label>
+                                <input type="number" class="nm" name="id_tipo_tarefa" placeholder="">
+
+                                <label for="email">Código do Usuario</label>
+                                <input type="text" class="email" name="id_usuario" placeholder="">
+
+                                <label for="password">Descrição da tarefa</label>
+                                <input type="text" class="password" name="desc" placeholder="">
+
+                                <label for="atv">Data de inicio</label>
+                                <input type="text" class="atv" name="dataIncio" placeholder="" maxlength="8">
+
+                                <label for="atv">Data de termino</label>
+                                <input type="text" class="np" name="DataTermino" placeholder=""  maxlength="8">
+                                <input type="submit" value="Adicionar" class="submit">
+                            </form>
+
+                        </dialog>
+
                     </header>
-                    
-                    <!-- Botões de Filtro dos Status das tarefas-->
+                    <!-- Botões de Filtro -->
                     <div class="task-filters">
                         <button class="filter-button">Atrasada</button>
                         <button class="filter-button">Em andamento</button>
                         <button class="filter-button">Concluída</button>
                     </div>
-                    <!-- Lista das Tarefas-->
-                    <div class="task-lists">                       
-                        <!-- Coluna de tarefas atrasadas -->
-                        <section class="task-column">
-                            <div class="task-card">
-                                <div class="task-header">
-                                    <span class="task-title">Manutenção</span>
-                                    <div class="task-actions">
-                                        <button class="edit-button">✏️</button>
-                                        <button class="delete-button">🗑️</button>
-                                    </div>
-                                </div>
-                                <p class="task-description">Fazer a manutenção da máquina de tecido, problema no rolamento.</p>
-                                <span class="task-date">25/09/2024</span><br>
-                                <span class="task-owner">Gustavo Franke</span>
-                            </div>
-                            <div class="task-card">
-                                <div class="task-header">
-                                    <span class="task-title">Manutenção</span>
-                                    <div class="task-actions">
-                                        <button class="edit-button">✏️</button>
-                                        <button class="delete-button">🗑️</button>
-                                    </div>
-                                </div>
-                                <p class="task-description">Fazer a manutenção da máquina de fios, reaprovetar fios existentes.</p>
-                                <span class="task-date">18/09/2024</span><br>
-                                <span class="task-owner">Gabriel Melz</span>
-                            </div>
-                            <div class="task-card">
-                                <div class="task-header">
-                                    <span class="task-title">Manutenção</span>
-                                    <div class="task-actions">
-                                        <button class="edit-button">✏️</button>
-                                        <button class="delete-button">🗑️</button>
-                                    </div>
-                                </div>
-                                <p class="task-description">Fazer a manutenção da máquina de fios, reaprovetar fios existentes.</p>
-                                <span class="task-date">18/09/2024</span><br>
-                                <span class="task-owner">Gabriel Melz</span>
-                            </div>
-                            
-                        </section>
-                        
-                        <!-- Coluna de tarefas em andamento -->
-                        <section class="task-column">   
-                            <div class="task-card">
-                                <div class="task-header">
-                                    <span class="task-title">Implementação</span>
-                                    <div class="task-actions">
-                                        <button class="edit-button">✏️</button>
-                                        <button class="delete-button">🗑️</button>
-                                    </div>
-                                </div>
-                                <p class="task-description">Fazer a implementação da API, para verificação de Login.</p>
-                                <span class="task-date">30/09/2024</span><br>
-                                <span class="task-owner">Nicolas Lange</span>
-                            </div>
-                        </section>
-                        
-                        <!-- Coluna de tarefas concluídas -->
-                        <section class="task-column">
 
-                            <div class="task-card">
-                                <div class="task-header">
-                                    <span class="task-title">Manutenção</span>
-                                    <div class="task-actions">
-                                        <button class="edit-button">✏️</button>
-                                        <button class="delete-button">🗑️</button>
-                                    </div>
+
+
+                    <!-- Lista de Tarefas (Atrasadas, Em andamento, Concluídas) -->
+                    <div class="task-grid">
+                        <!-- Exemplo de card de tarefa -->
+                        <div class="task-card">
+                            <div class="task-header">
+                                <span class="task-title">Manutenção</span>
+                                <div class="task-actions">
+                                    <button class="edit-button">✏️</button>
+                                    <button class="delete-button">🗑️</button>
                                 </div>
-                                <p class="task-description">Fazer a manutenção da máquina de fios, reaprovetar fios existentes.</p>
-                                <span class="task-date">18/09/2024</span><br>
-                                <span class="task-owner">Gabriel Melz</span>
                             </div>
-                            <div class="task-card">
-                                <div class="task-header">
-                                    <span class="task-title">Manutenção</span>
-                                    <div class="task-actions">
-                                        <button class="edit-button">✏️</button>
-                                        <button class="delete-button">🗑️</button>
-                                    </div>
+                            <p class="task-description">Fazer a manutenção da máquina de tecido, problema no rolamento.</p>
+                            <span class="task-date">25/09/2024</span><br>
+                            <span class="task-owner">Gustavo Franke</span>
+                        </div>
+                        <div class="task-card">
+                            <div class="task-header">
+                                <span class="task-title">Manutenção</span>
+                                <div class="task-actions">
+                                    <button class="edit-button">✏️</button>
+                                    <button class="delete-button">🗑️</button>
                                 </div>
-                                <p class="task-description">Fazer a manutenção da máquina de fios, reaprovetar fios existentes.</p>
-                                <span class="task-date">18/09/2024</span><br>
-                                <span class="task-owner">Gabriel Melz</span>
                             </div>
-                        </section>
+                            <p class="task-description">Fazer a manutenção da máquina de tecido, problema no rolamento.</p>
+                            <span class="task-date">25/09/2024</span><br>
+                            <span class="task-owner">Gustavo Franke</span>
+                        </div>
+                        <div class="task-card">
+                            <div class="task-header">
+                                <span class="task-title">Manutenção</span>
+                                <div class="task-actions">
+                                    <button class="edit-button">✏️</button>
+                                    <button class="delete-button">🗑️</button>
+                                </div>
+                            </div>
+                            <p class="task-description">Fazer a manutenção da máquina de tecido, problema no rolamento.</p>
+                            <span class="task-date">25/09/2024</span><br>
+                            <span class="task-owner">Gustavo Franke</span>
+                        </div>
                     </div>
                 </section>
             </main>
         </div>
-        <script src="js/script.js"></script>
+
+
+
+        <script>
+
+            const buttonTask = document.querySelector("#add-task-button-task");
+            const modalTask = document.querySelector(".Janela-modal-Tarefas");
+
+            buttonTask.onclick = function () {
+
+                modalTask.showModal();
+
+            };
+        </script>
+
     </body>
 </html>
