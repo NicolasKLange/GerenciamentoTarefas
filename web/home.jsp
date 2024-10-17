@@ -42,7 +42,7 @@
                     <header class="header">
                         <input type="text" placeholder="Pesquisar tarefa" class="search-bar"> 
                         <button class="add-task-button" id="add-task-button-task">Adicionar Tarefa  +</button>
-
+                        <button class="add-task-button" id="add-type-task-button-task">Adicionar tipo  +</button>
                         <dialog class="Janela-modal-Tarefas">
                             <form action="IncluirTarefas.jsp">
 
@@ -56,14 +56,26 @@
                                 <input type="text" class="password" name="desc" placeholder="">
 
                                 <label for="atv">Data de inicio</label>
-                                <input type="Date" class="atv" name="dataIncio" placeholder="" maxlength="8">
-                                
+                                <input type="date" class="atv" name="dataIncio" placeholder="" maxlength="8">
+
                                 <label for="atv">Data de termino</label>
-                                <input type="Date" class="np" name="DataTermino" placeholder=""  maxlength="8">
+                                <input type="date
+                                       " class="np" name="DataTermino" placeholder=""  maxlength="8">
+                                <input type="submit" value="Adicionar" class="submit">
+                                <input type="reset" value="Cancelar" class="submit" onclick="window.location.href = 'home.jsp';">
                             </form>
-
                         </dialog>
-
+                        
+                        <dialog class="Janela-modal-Tipo-Tarefas">
+                             <form action="incluirTipotarefa.jsp">
+                                
+                                <label for="nm"> Tipo da tarefa</label>
+                                <input type="text" class="nm" name="tipo_tarefa" placeholder="">
+                                <input type="submit" value="Adicionar" class="submit">
+                            </form>
+                            
+                        </dialog>
+                        
                     </header>
                     <!-- Botões de Filtro -->
                     <div class="task-filters">
@@ -119,7 +131,7 @@
         </div>
 
 
-        <script src="js/script.js"></script>
+
         <script>
 
             const buttonTask = document.querySelector("#add-task-button-task");
@@ -129,6 +141,13 @@
 
                 modalTask.showModal();
 
+            };
+            const buttontype = document.querySelector("#add-type-task-button-task");
+            const modaltype = document.querySelector(".Janela-modal-Tipo-Tarefas");
+
+
+            buttontype.onclick = function () {
+                modaltype.showModal();
             };
         </script>
 
