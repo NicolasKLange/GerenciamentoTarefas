@@ -4,7 +4,7 @@
     Author     : nicolas_lange
 --%>
 
-<%@page import="entity.usuario"%>
+<%@page import="entity.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
     </head>
     <body>
         <%
-        usuario user = new usuario();
+        Usuario user = new Usuario();
         
         user.setNome_usuario(request.getParameter("nome"));
         user.setEmail_usuario(request.getParameter("email"));

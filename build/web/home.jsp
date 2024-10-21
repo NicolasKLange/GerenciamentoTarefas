@@ -72,6 +72,7 @@
                                 <label for="nm"> Tipo da tarefa</label>
                                 <input type="text" class="nm" name="tipo_tarefa" placeholder="">
                                 <input type="submit" value="Adicionar" class="submit">
+                                <input type="reset" value="Cancelar" class="submit" onclick="window.location.href = 'home.jsp';">
                             </form>
                             
                         </dialog>
@@ -118,6 +119,7 @@
                                 <span class="task-title">Manutenção</span>
                                 <div class="task-actions">
                                     <button class="edit-button">✏️</button>
+                                    <a href="icons/iconizer-editar.svg"></a>
                                     <button class="delete-button">🗑️</button>
                                 </div>
                             </div>
@@ -150,6 +152,6 @@
                 modaltype.showModal();
             };
         </script>
-
+        
     </body>
 </html>

@@ -4,6 +4,9 @@
     Author     : nicolas_lange
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="entity.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,16 +15,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Usuários</title>
         <link rel="stylesheet" href="css/homeStyle.css">
+
     </head>
     <body>
         <div class="container">
             <!-- Barra Lateral -->
             <aside class="sidebar" id="sidebar">
                 <div class="logo" id="sidebar-logo">
-                    <img src="Image/logo.png" alt="Logo Ocelot" id="sidebar-logo-img">
                     <button class="toggle-button" id="toggleButton">   
-                        ☰
                     </button>
+                    <img src="Image/logo.png" alt="Logo Ocelot">
                 </div>
                 <nav>
                     <ul>
@@ -35,69 +38,111 @@
 
             <!-- Conteúdo Principal -->
             <main class="main-content">
-               
+
 
                 <div class="dashboard-header">
-                        <h2>Dashboard de Usuários</h2>
-                    </div>
-                  
-                    <!--Botão para adicionar tarefa-->
-                    <header class="header">
-                        <input type="text" placeholder="Pesquisar Usuário" class="search-bar"> 
-                        <button class="add-task-button">Adicionar Usuário  +</button>        
-                    </header>
+                    <h2>Dashboard de Usuários</h2>
+                </div>
 
-                    <dialog class="Janela-modal">
-                        <form action="incluirUsuario.jsp">
-                            <label for="nm">Nome</label>
-                            <input type="text" class="nm" name="nome" placeholder="Nome" required>
+                <!--Botão para adicionar tarefa-->
+                <header class="header">
+                    <input type="text" placeholder="Pesquisar Usuário" class="search-bar"> 
+                    <button class="add-task-button">Adicionar Usuário  +</button>        
+                </header>
 
-                            <label for="email">Email</label>
-                            <input type="email" class="email" name="email" placeholder="exemplo@gmail.com" required>
+                <dialog class="Janela-modal">
+                    <form action="incluirUsuario.jsp">
 
-                            <label for="password">Senha</label>
-                            <input type="password" class="password" name="senha" placeholder="Senha" required>
+                        <label for="nm">Nome</label>
+                        <input type="text" class="nm" name="nome" placeholder="Nome">
 
-                            <label for="atv">Ativado?</label>
-                            <select class="atv" name="ativacao" required>
-                                <option value="" disabled selected>Selecione</option>
-                                <option value="true">True</option>
-                                <option value="false">False</option>
-                            </select>
+                        <label for="email">Email</label>
+                        <input type="email" class="email" name="email" placeholder="exemplo@gmail.com">
 
-                            <label for="np">Nível de Permissão</label>
-                            <select class="np" name="nvpermissao"  required>
-                                <option value="" disabled selected>Selecione</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                        <label for="password">Senha</label>
+                        <input type="password" class="password" name="senha" placeholder="Senha">
 
-                            <input type="submit" value="Adicionar" class="submit">
-                        </form>
-                    </dialog>
 
-                    </div>
-                </section>
-            </main>
+                        <label for="atv">Ativado?</label>
+                        <select class="atv" name="ativacao" required>
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+
+                        <label for="np">Nível de Permissão</label>
+                        <select class="np" name="nvpermissao"  required>
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        <input type="submit" value="Adicionar" class="submit">
+                    </form>
+                </dialog>
+
+                <%
+                    Usuario user = new Usuario();
+
+                    List<Usuario> lista = new ArrayList<>();
+                    lista = user.listarUsuario();
+                %>
+                <div class="table" >
+                <table class="table-user">
+                    <thead >
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Ativado</th>
+                            <th scope="col">Nivel de permissao</th>
+                            <th scope="col">Excluir</th>
+                        </tr>
+                    </thead>
+                    <% for (Usuario de : lista) {%>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><%= de.getId_usuario()%></th>
+                            <td><%= de.getNome_usuario()%></td>
+                            <td><%= de.getEmail_usuario()%></td>
+                            <td><%= de.getAtivacao_usuario()%></td>
+                            <td><%= de.getNivel_permissao()%></td>
+                            <td><a href="ExcluirFuncionario.jsp?id=<%= de.getId_usuario()%>">Excluir</a></td>
+                    </tbody>
+                    <% }%>
+                </table>
+                
+
         </div>
+    </section>
+</main>
+</div>
 
-        <script src="js/script.js"></script>
-        <script>const button = document.querySelector(".add-task-button");
-            const modal = document.querySelector(".Janela-modal");
-            const button_close = document.querySelector(".fechar-modal");
+<script src="js/script.js"></script>
+<script>const button = document.querySelector(".add-task-button");
+    const modal = document.querySelector(".Janela-modal");
+    const button_close = document.querySelector(".fechar-modal");
 
 
 
-            button.onclick = function () {
-                modal.showModal();
-            };
+    button.onclick = function () {
+        modal.showModal();
+    };
 
-            button_close.onclick = function () {
-                modal.close();
-            };
-        </script>
-    </body>
+    button_close.onclick = function () {
+        modal.close();
+    };
+</script>
+</body>
 </html>
-
+<style>
+    a{
+        text-decoration: none;
+        color: #22656D;
+        transition: 1s;
+    }
+    a:hover{
+        color: #44b4c2;
+    }
+    </style>

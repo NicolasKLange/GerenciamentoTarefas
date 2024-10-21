@@ -111,7 +111,7 @@ body {
 }
 
 .add-task-button {
-    
+
     background-color: #225b5b;
     color: #F2EEE7;
     border: none;
@@ -503,7 +503,35 @@ label{
     color: #225b5b;
 }
 
-
 .Janela-modal-Tipo-Tarefas::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.table-user{
+    font-family: "Oswald", sans-serif;
+    background-color: #F2EEE7;
+    border: 4px solid #225b5b;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+
+}
+tr{
+    margin-left: 20px;
+    color: #225b5b;
+    text-align: center;
+    
+}
+
+th{
+    margin-left: 20px;
+    padding: 10px 40px;
+    color: #225b5b;
+    border-bottom: 2px #22656D solid;
+}
+
+td{
+    border-bottom: 2px #22656D solid;
 }

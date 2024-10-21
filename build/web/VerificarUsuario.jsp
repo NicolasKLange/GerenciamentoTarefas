@@ -3,9 +3,11 @@
     Created on : 11 de out. de 2024, 07:50:22
     Author     : kaua_mellato
 --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, entity.Usuario"%>
+<%@ page import="util.Conexao"%>
+<%@page import="entity.Usuario"%>
 
-<%@page import="entity.usuario"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +17,7 @@
     <body>
        <%
        
-       usuario u = new usuario();
+       Usuario u = new Usuario();
        
        u.setEmail_usuario(request.getParameter("email"));
        u.setSenha_usuario(request.getParameter("senha"));
@@ -27,6 +29,8 @@
            }
        
        
-       %>
+       
+%>
+
     </body>
 </html>
