@@ -26,10 +26,7 @@
               response.sendRedirect("home.jsp");
           }else{
               response.sendRedirect("index.html");
-           }
-       
-       
-       
+           }      
 %>
 
     </body>

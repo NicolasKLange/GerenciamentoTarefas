@@ -16,7 +16,7 @@ public class Usuario {
     private static String pegarEmail;
     private static String pegarSenha;
 
-   
+   /*Verificar Usuário para fazer login*/
     public Usuario verificarUsuario() throws ClassNotFoundException {
         Connection con = Conexao.conectar();
         Usuario user = null;
@@ -48,7 +48,7 @@ public class Usuario {
     }
 
     
-    // resgatando o nivel do usuario
+    /*Buscando nível de permissão do Usuário para fazer login*/
     public Usuario buscaNivelUsuario() throws ClassNotFoundException {
         Connection con = Conexao.conectar();
         Usuario user = null;
@@ -74,6 +74,8 @@ public class Usuario {
 
         return user;
     }    
+    
+    /*Incluir usuário*/
     public boolean incluirUsuario() throws ClassNotFoundException {
 
         Connection con = Conexao.conectar();
@@ -98,8 +100,7 @@ public class Usuario {
 
     }
     
-    
-    
+    /*listar usuários*/
     public List<Usuario> listarUsuario() throws ClassNotFoundException{
     
         List<Usuario> Listuser = new ArrayList<>();
@@ -121,6 +122,26 @@ public class Usuario {
         } 
        return Listuser;
     }
+    
+    /* REDEFINIR SENHA */
+    public boolean redefinirSenha() throws ClassNotFoundException, SQLException {
+        String sql = "UPDATE usuario SET senha_usuario = ? WHERE email_usuario = ?";
+
+        Connection con = Conexao.conectar();
+        try {
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, this.getSenha_usuario());
+            stm.setString(2, this.getEmail_usuario());
+            
+            int update = stm.executeUpdate();
+
+            return update > 0;
+        } catch (SQLException e) {
+            System.out.println("Erro ao redefinir senha: " + e.getMessage());
+            return false;
+        }
+    }   
+    
 
     public int getId_usuario() {
         return id_usuario;

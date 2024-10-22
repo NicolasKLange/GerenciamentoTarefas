@@ -120,7 +120,7 @@
                                 <div class="task-actions">
                                     <button class="edit-button">✏️</button>
                                     <a href="icons/iconizer-editar.svg"></a>
-                                    <button class="delete-button">🗑️</button>
+                                     
                                 </div>
                             </div>
                             <p class="task-description">Fazer a manutenção da máquina de tecido, problema no rolamento.</p>
