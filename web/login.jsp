@@ -29,7 +29,7 @@
         </div>
 
         <!-- Modal para redefinir senha -->
-        <div id="modalRedefinirSenha" class="modal">
+        <dialog id="modalRedefinirSenha" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="fecharModal()">&times;</span>
                 <h2>Redefinir Senha</h2>
@@ -46,7 +46,7 @@
                     <button type="submit">Redefinir Senha</button>
                 </form>
             </div>
-        </div>
+        </dialog>
 
         <script src="js/modal.js"></script> <!-- Script para manipular o modal -->
     </body>
@@ -66,6 +66,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+   
 }
 
 .modal-content {

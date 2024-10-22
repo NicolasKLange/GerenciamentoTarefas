@@ -30,7 +30,3 @@
         out.println("<script>alert('As senhas não coincidem, coloque as senhas iguais.'); history.back();</script>");
     }
 %>
-
-
-
-

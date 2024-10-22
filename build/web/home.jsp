@@ -114,6 +114,19 @@
                             <span class="task-date">25/09/2024</span><br>
                             <span class="task-owner">Gustavo Franke</span>
                         </div>
+                        
+                        <div class="task-card">
+                            <div class="task-header">
+                                <span class="task-title">Manutenção</span>
+                                <div class="task-actions">
+                                    <button class="edit-button">✏️</button>
+                                    <button class="delete-button">🗑️</button>
+                                </div>
+                            </div>
+                            <p class="task-description">Fazer a manutenção da máquina de tecido, problema no rolamento.</p>
+                            <span class="task-date">25/09/2024</span><br>
+                            <span class="task-owner">Gustavo Franke</span>
+                        </div>
                         <div class="task-card">
                             <div class="task-header">
                                 <span class="task-title">Manutenção</span>
