@@ -1,0 +1,537 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F2EEE7;
+}
+
+/* Layout da página */
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 100px;
+    background-color: #225b5b;
+    color: white;
+    height: 100vh;
+    padding: 10px 10px;
+    transition: width 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.sidebar.expanded {
+    width: 250px;
+}
+
+.sidebar .logo img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar.expanded .logo img {
+    width: 100px;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+}
+
+.sidebar nav ul li {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-image {
+    margin-bottom: 20px;
+    width: 30px;
+    height: 30px;
+    transition: width 0.3s, height 0.3s;
+}
+
+.sidebar.expanded .icon-image {
+    width: 35px;
+    height: 35px;
+}
+
+.sidebar nav ul li a .sidebar-text {
+    margin-top: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+
+.sidebar.expanded nav ul li a .sidebar-text {
+    opacity: 1;
+}
+
+.main-content {
+    flex: 1;
+    padding: 100px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.search-bar {
+    width: 60%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    font-size: 16px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.add-task-button {
+
+    background-color: #225b5b;
+    color: #F2EEE7;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 200px;
+    box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    margin-right: 100px;
+}
+
+.add-task-button:active {
+    background-color: #F2EEE7;
+    color: #225b5b;
+    border: none;
+    box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.2);
+}
+
+.task-filters {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #F2EEE7;
+    margin-bottom: 20px;
+}
+
+.filter-button {
+    padding: 10px;
+    border: none;
+    background-color: #F2EEE7;
+    border-radius: 20px;
+    border: 0.2rem #22656D solid;
+    cursor: pointer;
+    flex-grow: 1;
+    text-align: center;
+    margin: 0 140px;
+    font-family: "Oswald", sans-serif;
+    font-size: 20px;
+
+}
+
+.filter-button:hover {
+    transiton: 2s;
+    box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+/* Grade de tarefas */
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.task-card {
+    background-color: #225b5b;
+    color: #F2EEE7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.task-actions .edit-button,
+.task-actions .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.task-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.task-date,
+.task-owner {
+    font-size: 12px;
+}
+
+.toggle-button {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    background-color: #225b5b;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: left 0.3s;
+}
+
+.sidebar.expanded + .toggle-button {
+    left: 255px;
+}
+
+h2{
+    font-family: "Oswald", sans-serif;
+    font-size: 35px;
+    margin-bottom: 30px;
+    color: #225b5b;
+    margin-top: -20px;
+    margin-left: 20px;
+}
+
+/* Estilos para o layout de três colunas */
+.task-lists {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.task-column {
+    flex: 1;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+/* Estilo dos cards de tarefas */
+.task-card {
+    background-color: #225b5b;
+    color: #F2EEE7;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.task-actions .edit-button,
+.task-actions .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.task-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.task-date,
+.task-owner {
+    font-size: 12px;
+}
+
+.user-status {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+
+/* Estilo do modal user*/
+.Janela-modal {
+    background-color: #F2EEE7;
+    color: #225b5b;
+    width: 400px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+    border: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Janela-modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Janela-modal input[type="text"],
+.Janela-modal input[type="email"],
+.Janela-modal input[type="password"] {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.Janela-modal .submit {
+    background-color: #225b5b;
+    color: #F2EEE7;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    box-shadow: 0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.2);
+    transition: 1s;
+    margin-top: 10px;
+}
+
+.Janela-modal .submit:hover {
+    background-color: #F2EEE7;
+    color: #225b5b;
+}
+
+.Janela-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* Estilo do modal tarefa*/
+.Janela-modal-Tarefas {
+    background-color: #F2EEE7;
+    color: #225b5b;
+    width: 400px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+    border: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.Janela-modal-Tarefas form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Janela-modal-Tarefas input[type="text"],
+.Janela-modal-Tarefas input[type="email"],
+.Janela-modal-Tarefas input[type="password"] {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.Janela-modal-Tarefas .submit {
+    background-color: #225b5b;
+    color: #F2EEE7;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    box-shadow: 0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.2);
+    transition: 1s;
+    margin-top: 10px;
+}
+
+.Janela-modal-Tarefas .submit:hover {
+    background-color: #F2EEE7;
+    color: #225b5b;
+}
+
+
+.Janela-modal-Tarefas::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+label{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    font-family: "Oswald", sans-serif;
+}
+
+.nm{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.atv{
+    padding: 10px;
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.np{
+    padding: 10px;
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+/* Estilo do modal tipo tarefa*/
+.Janela-modal-Tipo-Tarefas {
+    background-color: #F2EEE7;
+    color: #225b5b;
+    width: 400px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+    border: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.Janela-modal-Tipo-Tarefas form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Janela-modal-Tipo-Tarefas input[type="text"],
+.Janela-modal-Tipo-Tarefas input[type="email"],
+.Janela-modal-Tipo-Tarefas input[type="password"] {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.Janela-modal-Tipo-Tarefas .submit {
+    background-color: #225b5b;
+    color: #F2EEE7;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    box-shadow: 0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.2);
+    transition: 1s;
+    margin-top: 10px;
+}
+
+.Janela-modal-Tipo-Tarefas .submit:hover {
+    background-color: #F2EEE7;
+    color: #225b5b;
+}
+
+.Janela-modal-Tipo-Tarefas::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.table-user{
+    font-family: "Oswald", sans-serif;
+    background-color: #F2EEE7;
+    border: 4px solid #225b5b;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+
+}
+tr{
+    margin-left: 20px;
+    color: #225b5b;
+    text-align: center;
+    
+}
+
+th{
+    margin-left: 20px;
+    padding: 10px 40px;
+    color: #225b5b;
+    border-bottom: 2px #22656D solid;
+}
+
+td{
+    border-bottom: 2px #22656D solid;
+}
