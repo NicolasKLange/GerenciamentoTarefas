@@ -30,6 +30,7 @@
             <aside class="sidebar" id="sidebar">
                 <div class="logo" id="sidebar-logo">
                     <button class="toggle-button" id="toggleButton">   
+                        ☰
                     </button>
                     <img src="Image/logo.png" alt="Logo Ocelot">
                 </div>

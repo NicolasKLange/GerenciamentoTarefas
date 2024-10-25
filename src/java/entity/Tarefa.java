@@ -68,6 +68,21 @@ public class Tarefa {
         } 
        return ListTarefa;
     }
+     
+    /*Excluir tarefa*/
+    public boolean excluirTarefa(int idTarefa) throws ClassNotFoundException {
+    Connection con = Conexao.conectar();
+    String sql = "DELETE FROM tarefas WHERE id_tarefa = ?";
+    try {
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setInt(1, idTarefa);
+        stm.executeUpdate();
+        return true;
+    } catch (SQLException e) {
+        return false;
+    }
+}
+
 
     public int getId_tarefa() {
         return id_tarefa;
