@@ -137,6 +137,7 @@ body {
     padding: 10px;
     background-color: #F2EEE7;
     margin-bottom: 20px;
+    
 }
 
 .filter-button {
@@ -151,7 +152,7 @@ body {
     margin: 0 140px;
     font-family: "Oswald", sans-serif;
     font-size: 20px;
-
+    margin-bottom: 10px;
 }
 
 .filter-button:hover {
@@ -211,7 +212,13 @@ h2{
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
-    box-shadow: 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .task-header {
@@ -222,13 +229,24 @@ h2{
 }
 
 .task-title {
-    font-size: 18px;
+    font-size: 23px;
     font-weight: bold;
 }
 
-.task-actions {
-    display: flex;
-    gap: 10px;
+.task-actions .edit-button,
+.task-actions .delete-button {
+    background-color: #1b4b4b;
+    color: #F2EEE7;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.task-actions .edit-button:hover,
+.task-actions .delete-button:hover {
+    background-color: #136b6b;
 }
 
 .task-actions .edit-button,
@@ -238,11 +256,6 @@ h2{
     cursor: pointer;
     color: white;
     font-size: 16px;
-}
-
-.task-description {
-    font-size: 14px;
-    margin-bottom: 10px;
 }
 
 .task-date,
@@ -385,21 +398,7 @@ label{
     box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
-.atv{
-    padding: 10px;
-    border: 1px solid #225b5b;
-    border-radius: 5px;
-    font-family: "Oswald", sans-serif;
-    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
-}
 
-.np{
-    padding: 10px;
-    border: 1px solid #225b5b;
-    border-radius: 5px;
-    font-family: "Oswald", sans-serif;
-    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
-}
 
 .Janela-modal-Tipo-Tarefas {
     background-color: #F2EEE7;
@@ -485,3 +484,82 @@ td{
     border-bottom: 2px #22656D solid;
 }
 
+.task-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+span.task-owner{
+    font-size: 20px;
+    margin-left: 60%;
+    text-align: end; 
+}
+
+span.task-date{
+    font-size: 15px;
+}p{
+    margin-top: 5px;
+}
+
+.task-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.atv {
+    padding: 10px;
+    background-color: white;
+    color: #225b5b;
+    border: 2px solid #22656D;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+.stat {
+    padding: 10px;
+    background-color: #F2EEE7;
+    color: #225b5b;
+    border: 2px solid #22656D;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+
+.atv:active {
+    transform: scale(0.98);
+}
+
+.att{
+    background-color: #F2EEE7;
+    padding: 5px;
+    border-radius: 10px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    color: #225b5b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #22656D;
+}
+
+.att:hover {
+    transform: scale(0.98);
+}
+
+.np{
+    padding: 10px;
+    border: 1px solid #225b5b;
+    border-radius: 5px;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+    background-color: white;
+    color: #225b5b;
+}
