@@ -11,7 +11,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard de Tarefas</title>
         <link rel="stylesheet" href="css/homeStyle.css">
-
     </head>
     <body>
 
@@ -52,7 +51,7 @@
                         <%if (user.verificarUsuario().getNivel_permissao().equals("admin") || user.verificarUsuario().getNivel_permissao().equals("gerente")) {%>
                         <li><a href="relatorios.jsp"><img src="logos/iconizer-painel.svg" class="icon-image" alt="Report Icon"> <span class="sidebar-text">Relatórios</span></a></li>
                                 <% }
-                            }%>
+                                    }%>
                         <li><a href="index.html"><img src="logos/iconizer-sair.svg" class="icon-image" alt="Logout Icon"> <span class="sidebar-text">Logout</span></a></li>
 
                     </ul>
@@ -74,12 +73,16 @@
                         <%if (user.verificarUsuario().getNivel_permissao().equals("admin") || user.verificarUsuario().getNivel_permissao().equals("gerente")) {%>
                         <button class="add-task-button" id="add-task-button-task">Adicionar Tarefa  +</button>
                         <button class="add-task-button" id="add-type-task-button-task">Adicionar tipo  +</button>
+                        <button class="add-task-button" id="add-edit-button-task">Atualizar tarefa</button>
+                        <button class="add-task-button" id="add-delete-button-task">Deletar tarefa</button>
                         <% } %>
 
                         <dialog class="Janela-modal-Tarefas">
                             <form action="IncluirTarefas.jsp">
 
                                 <label for="nm" class="AbrirModalEscolha">Tipo da tarefa</label>
+
+                                <%-- Modal de adicionar a tarefa  --%>
 
                                 <div class="ModalEscolha">
                                     <%
@@ -120,6 +123,8 @@
 
                         </dialog>
 
+                        <%-- Modal de adicionar o tipo da tarefa  --%>
+
                         <dialog class="Janela-modal-Tipo-Tarefas">
                             <form action="incluirTipotarefa.jsp">
 
@@ -130,35 +135,106 @@
 
                         </dialog>
 
+                        <%-- Modal de atualizar a tarefa  --%>
+
+                        <dialog class="Janela-atualizar-Tarefas">
+                            <form action="alterarTarefa.jsp">
+
+                                <label for="nm" class="AbrirModalEscolha">Tipo da tarefa</label>
+
+
+
+
+
+                                <div class="ModalEscolha">
+
+                                    <label for="password">Id da tarefa</label>
+                                    <input type="text" class="password" name="idTarefa" placeholder="">
+
+                                    <%
+                                        TipoTarefa tt2 = new TipoTarefa();
+                                        List<TipoTarefa> listTipo2 = tt2.adicionarTipo();
+
+                                        for (TipoTarefa t : listTipo2) {
+                                    %>
+
+                                    <input type="radio" name="id_tipo_tarefa" value="<%= t.getId_tipo_tarefa()%>">
+                                    <label><%= t.getTipo_tarefa()%></label>
+
+                                    <%}%>
+                                </div>
+                                <%  List<Usuario> listaUsur = new ArrayList<>();
+                                    listaUsur = user.listarUsuario();
+
+                                    for (Usuario ss : listaUsur) {
+                                %>
+
+
+
+                                <label><%= ss.getNome_usuario()%></label>
+                                <input type="radio" name="id_usuario" value="<%= ss.getId_usuario()%>">
+
+                                <%}%>
+
+                                <label for="atv">Status</label>
+                                <select class="atv" name="status" required>
+                                    <option value="" disabled selected>Selecione</option>
+                                    <option value="Em andamento">Em andamento</option>
+                                    <option value="Concluida">Concluida</option>
+                                </select>
+
+                                <label for="password">Descrição da tarefa</label>
+                                <input type="text" class="password" name="desc" placeholder="">
+
+                                <label for="atv">Data de inicio</label>
+                                <input type="Date" class="atv" name="dataIncio" placeholder="" maxlength="8">
+
+                                <label for="atv">Data de termino</label>
+                                <input type="Date" class="np" name="DataTermino" placeholder=""  maxlength="8">
+
+                                <input type="submit" value="Adicionar" class="submit">
+                            </form>
+                        </dialog>  
                     </header>
+
                     <!-- Botões de Filtro -->
                     <div class="task-filters">
-                        <button class="filter-button">Pendente</button>
-                        <button class="filter-button">Em andamento</button>
-                        <button class="filter-button">Concluída</button>
+                        <div id="task-pendente" class="task-section">
+                            <button class="filter-button" data-filter="Pendente">Pendente</button>
+                        </div>
+                        <div id="task-em-andamento" class="task-section">
+                            <button class="filter-button" data-filter="Em andamento">Em andamento</button>
+                        </div>
+                        <div id="task-concluida" class="task-section">
+                            <button class="filter-button" data-filter="Concluida">Concluida</button>
+                        </div>
                     </div>
-
 
 
                     <!-- Lista de Tarefas (Atrasadas, Em andamento, Concluídas) -->
                     <div class="task-grid" style="display: flex; flex-direction: column">
-                        <%
-                            List<Tarefa> lista = task.listarTarefas();
-                            for (Tarefa de : lista) {
-                        %>
-                        <div class="task-card">
+                        <% List<Tarefa> lista = new ArrayList<>();
+                            lista = task.listarTarefas();
+                            for (Tarefa de : lista) {%>
+                        <div class="task-card" data-status="<%= de.getStatus()%>">
                             <div class="task-header">
                                 <span class="task-title"><%= de.getTipo_tarefa()%></span>
                                 <div class="task-actions">
-                                    <button class="edit-button">✏️</button>
-                                    <form action="excluirTarefa.jsp" method="post" style="display:inline;">
-                                        <input type="hidden" name="id_tarefa" value="<%= de.getId_tarefa()%>">
-                                        <button type="submit" class="delete-button">🗑️</button>
-                                    </form>
+                                    <button class="delete-button">🗑️</button>
                                 </div>
                             </div>
-                            <p class="task-description"><%= de.getDesc_tarefa()%></p>     
-                            <p class="task-description"><%= de.getStatus()%></p>
+                            <p class="task-description"><%= de.getDesc_tarefa()%></p>  
+
+                            <form action="alterarStatus.jsp">
+                                <input type="text" name="idTarefa" value="<%= de.getId_tarefa()%>" style="display:none">    
+                                <select class="atv" name="status" required>
+                                    <option value="" disabled selected><%= de.getStatus()%></option>
+                                    <option value="Pendente">Pendente</option>
+                                    <option value="Em andamento">Em andamento</option>
+                                    <option value="Concluida">Concluida</option>
+                                </select>
+                                <input type="submit" value="Atualizar" class="submit">
+                            </form>
                             <span class="task-date"><%= de.getData_inicio_tarefa()%></span><br>
                             <span class="task-date"><%= de.getData_fim_tarefa()%></span><br>
                             <span class="task-owner"><%= de.getNome_usuario()%></span>
@@ -167,6 +243,19 @@
                     </div>
 
                     </div>
+
+                    <dialog id="Modal-Edit">
+                        <form action="action">
+                            <label for="password">Descrição da tarefa</label>
+                            <input type="text" class="password" name="desc" placeholder="">
+
+                            <label for="atv">Data de inicio</label>
+                            <input type="Date" class="atv" name="dataIncio" placeholder="" maxlength="8">
+
+                            <label for="atv">Data de termino</label>
+                            <input type="Date" class="np" name="DataTermino" placeholder=""  maxlength="8">
+                        </form>
+                    </dialog>
                 </section>
             </main>
         </div>
@@ -199,8 +288,38 @@
             buttonEscolher.onclick = function () {
                 ModalEscolher.style.display = "block";
             };
-        </script>
 
+
+            const buttonEdit = document.querySelector("#add-edit-button-task");
+            const ModalEdit = document.querySelector(".Janela-atualizar-Tarefas");
+
+            buttonEdit.onclick = function () {
+                ModalEdit.showModal();
+            };
+
+            document.addEventListener("DOMContentLoaded", () => {
+                const taskCards = document.querySelectorAll(".task-card");
+                const sections = {
+                    "Pendente": document.getElementById("task-pendente"),
+                    "Em andamento": document.getElementById("task-em-andamento"),
+                    "Concluida": document.getElementById("task-concluida")
+                };
+
+                taskCards.forEach(task => {
+                    const status = task.getAttribute("data-status");
+                    sections[status]?.appendChild(task);
+                });
+
+                const filterButtons = document.querySelectorAll(".filter-button");
+                filterButtons.forEach(button => {
+                    button.addEventListener("click", () => {
+                        const filter = button.getAttribute("data-filter");
+                        taskCards.forEach(task => {
+                            task.style.display = task.getAttribute("data-status") === filter ? "block" : "none";
+                        });
+                    });
+                });
+            });
+        </script>
     </body>
 </html>
-<script src="js/script.js"></script>

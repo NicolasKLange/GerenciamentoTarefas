@@ -69,20 +69,50 @@ public class Tarefa {
        return ListTarefa;
     }
      
-    /*Excluir tarefa*/
-    public boolean excluirTarefa(int idTarefa) throws ClassNotFoundException {
-    Connection con = Conexao.conectar();
-    String sql = "DELETE FROM tarefas WHERE id_tarefa = ?";
-    try {
-        PreparedStatement stm = con.prepareStatement(sql);
-        stm.setInt(1, idTarefa);
-        stm.executeUpdate();
-        return true;
-    } catch (SQLException e) {
-        return false;
-    }
-}
-
+     public boolean EditarTarefa() throws ClassNotFoundException{
+         
+      Connection con = Conexao.conectar();
+      
+      String sql = "UPDATE tarefas SET id_tipo_tarefa = ? , id_usuario = ? , desc_tarefa = ? , status_tarefa = ? , data_inicio_tarefa = ? , data_fim_tarefa = ?  WHERE id_tarefa = ?";
+      
+         try {
+             PreparedStatement stm = con.prepareStatement(sql);
+             stm.setInt(1, this.getId_tipo_tarefa());
+             stm.setInt(2, this.getId_usuario());
+             stm.setString(3, this.getDesc_tarefa());
+             stm.setString(4, this.getStatus());
+             stm.setDate(5, this.getData_inicio_tarefa());
+             stm.setDate(6, this.getData_fim_tarefa());
+             stm.setInt(7,this.getId_tarefa());
+             stm.execute();
+         } catch (SQLException e) {
+             return  false;
+         }
+         return true;
+     }
+     
+     public boolean EditarStatus() throws ClassNotFoundException{
+         
+      Connection con = Conexao.conectar();
+      
+      String sql = "UPDATE tarefas SET  status_tarefa = ?  WHERE id_tarefa = ?";
+      
+         try {
+             PreparedStatement stm = con.prepareStatement(sql);
+             stm.setString(1, this.getStatus());
+             stm.setInt(2, this.getId_tarefa());
+    
+             stm.execute();
+         } catch (SQLException e) {
+             return  false;
+         }
+         return true;
+     }
+     
+     
+     
+     
+      
 
     public int getId_tarefa() {
         return id_tarefa;
@@ -154,10 +184,5 @@ public class Tarefa {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-    
-    
-   
-    
-    
+    }  
 }

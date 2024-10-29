@@ -108,21 +108,20 @@ body {
     font-size: 16px;
     font-family: "Oswald", sans-serif;
     box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+    margin-right: 50px;
 }
 
 .add-task-button {
 
     background-color: #225b5b;
     color: #F2EEE7;
-    border: none;
     padding: 15px 25px;
     border-radius: 20px;
     cursor: pointer;
-    margin-right: 200px;
     box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
     font-family: "Oswald", sans-serif;
     font-size: 16px;
-    margin-right: 100px;
+    margin-right: 20px;
 }
 
 .add-task-button:active {
@@ -160,56 +159,6 @@ body {
     box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
-/* Grade de tarefas */
-.task-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.task-card {
-    background-color: #225b5b;
-    color: #F2EEE7;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0.2rem 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
-}
-
-.task-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.task-title {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.task-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.task-actions .edit-button,
-.task-actions .delete-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-size: 16px;
-}
-
-.task-description {
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.task-date,
-.task-owner {
-    font-size: 12px;
-}
 
 .toggle-button {
     position: absolute;
@@ -451,7 +400,7 @@ label{
     font-family: "Oswald", sans-serif;
     box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
 }
-/* Estilo do modal tipo tarefa*/
+
 .Janela-modal-Tipo-Tarefas {
     background-color: #F2EEE7;
     color: #225b5b;
@@ -535,3 +484,4 @@ th{
 td{
     border-bottom: 2px #22656D solid;
 }
+
