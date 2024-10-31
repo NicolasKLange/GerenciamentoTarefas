@@ -44,6 +44,7 @@
                     <input type="password" id="confirmaSenha" name="confirmaSenha" placeholder="Confirme sua nova senha" required>
 
                     <button type="submit">Redefinir Senha</button>
+                    <button type="submit" onclick="window.location.href='login.jsp'">Cancelar</button>
                 </form>
             </div>
         </dialog>

@@ -174,9 +174,15 @@ body {
     transition: left 0.3s;
 }
 
-.sidebar.expanded + .toggle-button {
-    left: 255px;
+.sidebar.expanded {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    height: 100%; 
+    background-color: #f8f9fa;
+    z-index: 1000; 
 }
+
 
 h2{
     font-family: "Oswald", sans-serif;
@@ -200,10 +206,6 @@ h2{
     display: flex;
     flex-direction: column;
 }
-
-
-
-
 
 /* Estilo dos cards de tarefas */
 .task-card {
@@ -267,7 +269,6 @@ h2{
     font-size: 20px;
     margin-left: 10px;
 }
-
 
 /* Estilo do modal user*/
 .Janela-modal {
@@ -562,4 +563,10 @@ span.task-date{
     box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
     background-color: white;
     color: #225b5b;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
 }
