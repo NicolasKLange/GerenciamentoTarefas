@@ -27,8 +27,8 @@
         t.setId_tipo_tarefa(Integer.parseInt(request.getParameter("id_tipo_tarefa")));
         t.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
         t.setDesc_tarefa(request.getParameter("desc"));
-        t.setData_inicio_tarefa(Date.valueOf(request.getParameter("dataIncio")));
-        t.setData_fim_tarefa(Date.valueOf(request.getParameter("DataTermino")));
+        t.setData_inicio_tarefa(Date.valueOf(request.getParameter("dataInicio")));
+        t.setData_fim_tarefa(Date.valueOf(request.getParameter("dataTermino")));
         
          if (t.incluirtarefa()) {
                 response.sendRedirect("home.jsp");

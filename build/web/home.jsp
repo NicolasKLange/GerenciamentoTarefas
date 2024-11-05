@@ -61,6 +61,7 @@
                         <button class="add-task-button" id="add-task-button-task">Adicionar Tarefa  +</button>
                         <button class="add-task-button" id="add-type-task-button-task">Adicionar tipo  +</button>
                         <% } %>
+
                     </header>
                     <dialog class="Janela-modal-Tarefas">
                         <form action="IncluirTarefas.jsp">
@@ -93,9 +94,9 @@
                             <label for="desc">Descrição da tarefa</label>
                             <input type="text" class="password" name="desc" placeholder="">
                             <label for="dataInicio">Data de inicio</label>
-                            <input type="date" class="atv" name="dataInicio" maxlength="8">
+                            <input type="date" class="atv" name="dataInicio">
                             <label for="dataTermino">Data de termino</label>
-                            <input type="date" class="np" name="dataTermino" maxlength="8">
+                            <input type="date" class="np" name="dataTermino">
                             <input type="submit" value="Adicionar" class="submit">
 
                         </form>
@@ -114,46 +115,7 @@
                             <button type="button" onclick="window.location.href = 'home.jsp'" class="submit">Cancelar</button>
                         </div>
                     </dialog>
-                    <%-- Modal de atualizar a tarefa  --%>
-                    <dialog class="Janela-atualizar-Tarefas">
-                        <form action="alterarTarefa.jsp">
-                            <label for="nm" class="AbrirModalEscolha">Tipo da tarefa</label>
-                            <div class="ModalEscolha"
-                                 <label for="password">Id da tarefa</label>
-                                <input type="text" class="password" name="idTarefa" placeholder="">
-                                <%
-                                    TipoTarefa tt2 = new TipoTarefa();
-                                    List<TipoTarefa> listTipo2 = tt2.adicionarTipo();
 
-                                    for (TipoTarefa t : listTipo2) {
-                                %>
-                                <input type="radio" name="id_tipo_tarefa" value="<%= t.getId_tipo_tarefa()%>">
-                                <label><%= t.getTipo_tarefa()%></label>
-                                <%}%>
-                            </div>
-                            <%  List<Usuario> listaUsur = new ArrayList<>();
-                                listaUsur = user.listarUsuario();
-
-                                for (Usuario ss : listaUsur) {
-                            %>
-                            <label><%= ss.getNome_usuario()%></label>
-                            <input type="radio" name="id_usuario" value="<%= ss.getId_usuario()%>">
-                            <%}%>
-                            <label for="atv">Status</label>
-                            <select class="atv" name="status" required>
-                                <option value="" disabled selected>Selecione</option>
-                                <option value="Em andamento">Em andamento</option>
-                                <option value="Concluida">Concluida</option>
-                            </select>
-                            <label for="password">Descrição da tarefa</label>
-                            <input type="text" class="password" name="desc" placeholder="">
-                            <label for="atv">Data de inicio</label>
-                            <input type="Date" class="atv" name="dataIncio" placeholder="" maxlength="8">
-                            <label for="atv">Data de termino</label>
-                            <input type="Date" class="np" name="DataTermino" placeholder=""  maxlength="8">
-                            <input type="submit" value="Adicionar" class="submit">
-                        </form>
-                    </dialog>  
                     </header>
                     <!-- Botões de Filtro -->
                     <div class="task-filters">
@@ -177,7 +139,9 @@
                                 <span class="task-title"><%= de.getTipo_tarefa()%></span>
                                 <div class="task-actions">
                                     <button class="delete-button">
-                                        <img src="Image/delete.png" alt="Delete" style="width:25px; height:25px;">
+                                        <a href="ExcluirTarefa.jsp?excluir=<%= de.getId_tarefa()%>">
+                                            <img src="Image/delete.png" alt="Delete" style="width:25px; height:25px;">
+                                        </a>
                                     </button>
                                 </div>
                             </div>
@@ -216,8 +180,10 @@
                 </section>
             </main>
         </div>
-        <script>
 
+
+        <%if (user.verificarUsuario().getNivel_permissao().equals("admin") || user.verificarUsuario().getNivel_permissao().equals("gerente")) {%>
+        <script>
             const buttonTask = document.querySelector("#add-task-button-task");
             const modalTask = document.querySelector(".Janela-modal-Tarefas");
             buttonTask.onclick = function () {
@@ -237,6 +203,13 @@
                 ModalEscolher.style.display = "block";
             };
 
+        </script>
+        <%}%>
+
+
+
+
+        <script>
             document.addEventListener("DOMContentLoaded", () => {
                 const taskCards = document.querySelectorAll(".task-card");
                 const sections = {

@@ -13,10 +13,10 @@
         
         Usuario user = new  Usuario();
         
-        user.setId_usuario(Integer.parseInt(request.getParameter("id")));
+        user.setId_usuario(Integer.parseInt(request.getParameter("id_tarefa")));
         
         if (user.excluirUsuario()) {
-               response.sendRedirect("users.jsp");
+               response.sendRedirect("home.jsp");
             }
         
         %>

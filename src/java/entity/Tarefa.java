@@ -4,14 +4,13 @@
  */
 package entity;
 
-
 import util.Conexao;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Tarefa {
+
     private int id_tarefa;
     private int id_tipo_tarefa;
     private String nome_usuario;
@@ -19,20 +18,19 @@ public class Tarefa {
     private String status;
     private int id_usuario;
     private String desc_tarefa;
-    private Date  data_inicio_tarefa;
-    private Date  data_fim_tarefa;
-    
-    
-    public boolean incluirtarefa() throws ClassNotFoundException{
-        
+    private Date data_inicio_tarefa;
+    private Date data_fim_tarefa;
+
+    public boolean incluirtarefa() throws ClassNotFoundException {
+
         Connection con = Conexao.conectar();
-        
+
         String sql = "insert into tarefas( id_tipo_tarefa, id_usuario, desc_tarefa , data_inicio_tarefa , data_fim_tarefa) values( ? , ? , ? , ? , ?)";
-        
+
         try {
             PreparedStatement stm = con.prepareStatement(sql);
-            stm.setInt(1,this.getId_tipo_tarefa());
-            stm.setInt(2,this.getId_usuario());
+            stm.setInt(1, this.getId_tipo_tarefa());
+            stm.setInt(2, this.getId_usuario());
             stm.setString(3, this.getDesc_tarefa());
             stm.setDate(4, this.getData_inicio_tarefa());
             stm.setDate(5, this.getData_fim_tarefa());
@@ -40,79 +38,89 @@ public class Tarefa {
         } catch (Exception e) {
             return false;
         }
-    return true;
+        return true;
     }
-    
-     public List<Tarefa> listarTarefas() throws ClassNotFoundException{
-    
+
+    public List<Tarefa> listarTarefas() throws ClassNotFoundException {
+
         List<Tarefa> ListTarefa = new ArrayList<>();
-        Connection con = Conexao.conectar(); 
+        Connection con = Conexao.conectar();
         String sql = "SELECT t.id_tarefa , tp.tipo_tarefa , t.status_tarefa ,u.nome_usuario , t.desc_tarefa , t.data_inicio_tarefa , t.data_fim_tarefa FROM tarefas t INNER JOIN tipo_tarefa tp ON t.id_tipo_tarefa = tp.id_tipo_tarefa  INNER JOIN usuario u on t.id_usuario = u.id_usuario order by t.data_fim_tarefa ";
-         try {
-            PreparedStatement stm = con.prepareStatement(sql); 
-            ResultSet rs = stm.executeQuery(); 
-            while (rs.next()) {                 
-                 Tarefa t = new Tarefa();
-                 t.setId_tarefa(rs.getInt("t.id_tarefa"));
-                 t.setTipo_tarefa(rs.getString("tp.tipo_tarefa"));
-                 t.setStatus(rs.getString("t.status_tarefa"));
-                 t.setNome_usuario(rs.getString("u.nome_usuario"));
-                 t.setDesc_tarefa(rs.getString("t.desc_tarefa"));
-                 t.setData_inicio_tarefa(rs.getDate("t.data_inicio_tarefa"));
-                 t.setData_fim_tarefa(rs.getDate("t.data_fim_tarefa"));
-                 
-                 
-                 ListTarefa.add(t);
-             }
-        } catch (SQLException e) {   
-        } 
-       return ListTarefa;
+        try {
+            PreparedStatement stm = con.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Tarefa t = new Tarefa();
+                t.setId_tarefa(rs.getInt("t.id_tarefa"));
+                t.setTipo_tarefa(rs.getString("tp.tipo_tarefa"));
+                t.setStatus(rs.getString("t.status_tarefa"));
+                t.setNome_usuario(rs.getString("u.nome_usuario"));
+                t.setDesc_tarefa(rs.getString("t.desc_tarefa"));
+                t.setData_inicio_tarefa(rs.getDate("t.data_inicio_tarefa"));
+                t.setData_fim_tarefa(rs.getDate("t.data_fim_tarefa"));
+
+                ListTarefa.add(t);
+            }
+        } catch (SQLException e) {
+        }
+        return ListTarefa;
     }
-     
-     public boolean EditarTarefa() throws ClassNotFoundException{
-         
-      Connection con = Conexao.conectar();
-      
-      String sql = "UPDATE tarefas SET id_tipo_tarefa = ? , id_usuario = ? , desc_tarefa = ? , status_tarefa = ? , data_inicio_tarefa = ? , data_fim_tarefa = ?  WHERE id_tarefa = ?";
-      
-         try {
-             PreparedStatement stm = con.prepareStatement(sql);
-             stm.setInt(1, this.getId_tipo_tarefa());
-             stm.setInt(2, this.getId_usuario());
-             stm.setString(3, this.getDesc_tarefa());
-             stm.setString(4, this.getStatus());
-             stm.setDate(5, this.getData_inicio_tarefa());
-             stm.setDate(6, this.getData_fim_tarefa());
-             stm.setInt(7,this.getId_tarefa());
-             stm.execute();
-         } catch (SQLException e) {
-             return  false;
-         }
-         return true;
-     }
-     
-     public boolean EditarStatus() throws ClassNotFoundException{
-         
-      Connection con = Conexao.conectar();
-      
-      String sql = "UPDATE tarefas SET  status_tarefa = ?  WHERE id_tarefa = ?";
-      
-         try {
-             PreparedStatement stm = con.prepareStatement(sql);
-             stm.setString(1, this.getStatus());
-             stm.setInt(2, this.getId_tarefa());
-    
-             stm.execute();
-         } catch (SQLException e) {
-             return  false;
-         }
-         return true;
-     }
-     
-     
-     
-     
-      
+
+    public boolean excluirTarefa() throws ClassNotFoundException {
+
+        Connection con = Conexao.conectar();
+        String sql = "delete from tarefas where id_tarefa = ?";
+
+        try {
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setInt(1, this.getId_tarefa());
+            stm.execute();
+        } catch (SQLException e) {
+            System.out.println("Deu erro");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean EditarTarefa() throws ClassNotFoundException {
+
+        Connection con = Conexao.conectar();
+
+        String sql = "UPDATE tarefas SET id_tipo_tarefa = ? , id_usuario = ? , desc_tarefa = ? , status_tarefa = ? , data_inicio_tarefa = ? , data_fim_tarefa = ?  WHERE id_tarefa = ?";
+
+        try {
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setInt(1, this.getId_tipo_tarefa());
+            stm.setInt(2, this.getId_usuario());
+            stm.setString(3, this.getDesc_tarefa());
+            stm.setString(4, this.getStatus());
+            stm.setDate(5, this.getData_inicio_tarefa());
+            stm.setDate(6, this.getData_fim_tarefa());
+            stm.setInt(7, this.getId_tarefa());
+            stm.execute();
+        } catch (SQLException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean EditarStatus() throws ClassNotFoundException {
+
+        Connection con = Conexao.conectar();
+
+        String sql = "UPDATE tarefas SET  status_tarefa = ?  WHERE id_tarefa = ?";
+
+        try {
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, this.getStatus());
+            stm.setInt(2, this.getId_tarefa());
+
+            stm.execute();
+        } catch (SQLException e) {
+            return false;
+        }
+        return true;
+    }
 
     public int getId_tarefa() {
         return id_tarefa;
@@ -184,5 +192,5 @@ public class Tarefa {
 
     public void setStatus(String status) {
         this.status = status;
-    }  
+    }
 }
