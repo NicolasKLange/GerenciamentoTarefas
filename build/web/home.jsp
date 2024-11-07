@@ -14,16 +14,14 @@
     <body>
 
         <%
-
+            //Instanciando classes, para mostrar as devidas tarefas cadastradas
             Tarefa task = new Tarefa();
-
             Usuario user = new Usuario();
 
             user.setEmail_usuario(user.getPegarEmail());
             user.setSenha_usuario(user.getPegarSenha());
+        %>  
 
-
-        %>      
         <div class="container">
             <!-- Barra Lateral -->
             <aside class="sidebar" id="sidebar">
@@ -36,36 +34,50 @@
                 <nav>
                     <ul>
                         <li><a href="home.jsp"><img src="logos/iconizer-home.svg" class="icon-image" alt="Home Icon"> <span class="sidebar-text">Tela Principal</span></a></li>  
-                                <%                            if (user != null) {
-                                        user = user.verificarUsuario();
-                                        if (user.verificarUsuario().getNivel_permissao().equals("admin")) {
-                                %><li><a href="users.jsp"><img src="logos/iconizer-users.svg" class="icon-image" alt="User Icon"> <span class="sidebar-text">Usuários</span></a></li>                      
-                                <% } %>
-                                <%if (user.verificarUsuario().getNivel_permissao().equals("admin") || user.verificarUsuario().getNivel_permissao().equals("gerente")) {%>
+                        <!-- Verificação da permissão do usuário para visualizar as funcionalidades do sistema -->
+                        <%
+                            if (user != null) {
+                                user = user.verificarUsuario();
+                                if (user.verificarUsuario().getNivel_permissao().equals("admin")) {
+                        %>
+                        <li><a href="users.jsp"><img src="logos/iconizer-users.svg" class="icon-image" alt="User Icon"> <span class="sidebar-text">Usuários</span></a></li>                      
+                                <%
+                                    }
+                                %>
+                                <%
+                                    if (user.verificarUsuario().getNivel_permissao().equals("admin") || user.verificarUsuario().getNivel_permissao().equals("gerente")) {
+                                %>
                         <li><a href="relatorios.jsp"><img src="logos/iconizer-painel.svg" class="icon-image" alt="Report Icon"> <span class="sidebar-text">Relatórios</span></a></li>
-                                <% }
-                                    }%>
+                                <%
+                                        }
+                                    }
+                                %>
                         <li><a href="index.html"><img src="logos/iconizer-sair.svg" class="icon-image" alt="Logout Icon"> <span class="sidebar-text">Logout</span></a></li>
                     </ul>
                 </nav>
             </aside>
-            <!-- Conteúdo Principal -->
+            <!-- Conteúdo Principal da Tela do Sistema-->
             <main class="main-content">
                 <section class="dashboard">
                     <div class="dashboard-header">
                         <h2>Dashboard de Tarefas</h2>
                     </div>
                     <header class="header">
-                        <input type="text" placeholder="Pesquisar tarefa" class="search-bar">
-                        <%if (user.verificarUsuario().getNivel_permissao().equals("admin") || user.verificarUsuario().getNivel_permissao().equals("gerente")) {%>
+                        <input type="text" placeholder="Pesquisar tarefa" class="search-bar">'
+                        <!-- Verificação da permissão do usuário para visualizar as funcionalidades do sistema -->
+                        <%
+                            if (user.verificarUsuario().getNivel_permissao().equals("admin") || user.verificarUsuario().getNivel_permissao().equals("gerente")) {
+                        %>
                         <button class="add-task-button" id="add-task-button-task">Adicionar Tarefa  +</button>
                         <button class="add-task-button" id="add-type-task-button-task">Adicionar tipo  +</button>
-                        <% } %>
-
+                        <%
+                            }
+                        %>
                     </header>
+                    <!-- Modal para incluir uma tarefa -->
                     <dialog class="Janela-modal-Tarefas">
                         <form action="IncluirTarefas.jsp">
-                            <!-- Escolha de Tipo da Tarefa -->
+                            <!-- Escolha de Tipo da Tarefa-->
                             <label for="nm" class="AbrirModalEscolha">Tipo da tarefa</label>
                             <div class="ModalEscolha">
                                 <%
@@ -78,19 +90,20 @@
                                 <label for="tipo_<%= t.getId_tipo_tarefa()%>"><%= t.getTipo_tarefa()%></label>
                                 <% } %>
                             </div>
-                            <!-- Escolha do Usuário Responsável -->
+                            <!-- Escolha do Usuário Responsável pela tarefa-->
                             <label for="nm" class="AbrirModalEscolha">Escolher usuário</label>
                             <div class="ModalEscolha">
                                 <%
                                     List<Usuario> listaUsu = user.listarUsuario();
-
                                     for (Usuario ss : listaUsu) {
                                 %>
                                 <input type="radio" name="id_usuario" value="<%= ss.getId_usuario()%>" id="usuario_<%= ss.getId_usuario()%>">
                                 <label for="usuario_<%= ss.getId_usuario()%>"><%= ss.getNome_usuario()%></label>
-                                <% } %>
+                                <%
+                                    }
+                                %>
                             </div>
-                            <!-- Restante do Formulário -->
+                            <!-- Imformações Restante do Formulário -->
                             <label for="desc">Descrição da tarefa</label>
                             <input type="text" class="password" name="desc" placeholder="">
                             <label for="dataInicio">Data de inicio</label>
@@ -98,24 +111,24 @@
                             <label for="dataTermino">Data de termino</label>
                             <input type="date" class="np" name="dataTermino">
                             <input type="submit" value="Adicionar" class="submit">
-
                         </form>
+                        <!-- Botão para cancelar inclusão de tarefa -->
                         <div class="button-container">
                             <button type="button" onclick="window.location.href = 'home.jsp'" class="submit">Cancelar</button>
                         </div>
                     </dialog>
-                    <%-- Modal de adicionar o tipo da tarefa  --%>
-                    <dialog class="Janela-modal-Tipo-Tarefas">
-                        <form action="incluirTipotarefa.jsp">
-                            <label for="nm"> tipo da tarefa</label>
-                            <input type="text" class="nm" name="tipo_tarefa" placeholder="" minlength="4">
-                            <input type="submit" value="Adicionar" class="submit">
-                        </form>
-                        <div class="button-container">
-                            <button type="button" onclick="window.location.href = 'home.jsp'" class="submit">Cancelar</button>
-                        </div>
-                    </dialog>
-
+                    <!-- Modal de incluir tipo da tarefa  -->
+                        <dialog class="Janela-modal-Tipo-Tarefas">
+                            <form action="incluirTipotarefa.jsp">
+                                <label for="nm"> tipo da tarefa</label>
+                                <input type="text" class="nm" name="tipo_tarefa" placeholder="" minlength="4">
+                                <input type="submit" value="Adicionar" class="submit">
+                            </form>
+                            <!-- Botão para cancelar inclusão do tipo de tarefa -->
+                            <div class="button-container">
+                                <button type="button" onclick="window.location.href = 'home.jsp'" class="submit">Cancelar</button>
+                            </div>
+                        </dialog>
                     </header>
                     <!-- Botões de Filtro -->
                     <div class="task-filters">
@@ -133,7 +146,8 @@
                     <div class="task-grid" style="display: flex; flex-direction: column">
                         <% List<Tarefa> lista = new ArrayList<>();
                             lista = task.listarTarefas();
-                            for (Tarefa de : lista) {%>
+                            for (Tarefa de : lista) {
+                        %>
                         <div class="task-card" data-status="<%= de.getStatus()%>">
                             <div class="task-header">
                                 <span class="task-title"><%= de.getTipo_tarefa()%></span>
@@ -180,36 +194,38 @@
                 </section>
             </main>
         </div>
-
-
-        <%if (user.verificarUsuario().getNivel_permissao().equals("admin") || user.verificarUsuario().getNivel_permissao().equals("gerente")) {%>
+        <!-- Verificação da permissão do usuário para visualizar as funcionalidades do sistema -->
+        <%
+            if (user.verificarUsuario().getNivel_permissao().equals("admin") || user.verificarUsuario().getNivel_permissao().equals("gerente")) {
+        %>
         <script>
+            //Função para abrir modal para incluir tarefa
             const buttonTask = document.querySelector("#add-task-button-task");
             const modalTask = document.querySelector(".Janela-modal-Tarefas");
             buttonTask.onclick = function () {
                 modalTask.showModal();
             };
-
+            
+            //Função para abrir o modal para incluir tipo de tarefa
             const buttontype = document.querySelector("#add-type-task-button-task");
             const modaltype = document.querySelector(".Janela-modal-Tipo-Tarefas");
             buttontype.onclick = function () {
                 modaltype.showModal();
             };
-
+            
+            //Função para abrir o modal para escolher tarefa
             const buttonEscolher = document.querySelector(".AbrirModalEscolha");
             const ModalEscolher = document.querySelector(".ModalEscolha");
-
             buttonEscolher.onclick = function () {
                 ModalEscolher.style.display = "block";
             };
 
         </script>
-        <%}%>
-
-
-
-
+        <%
+            }
+        %>
         <script>
+            //Função para alterar o status da tarefa
             document.addEventListener("DOMContentLoaded", () => {
                 const taskCards = document.querySelectorAll(".task-card");
                 const sections = {
@@ -226,7 +242,7 @@
                     }
                 });
 
-                // Configuração dos botões de filtro
+                // Configuração dos botões de filtro do status da tarefa
                 const filterButtons = document.querySelectorAll(".filter-button");
                 filterButtons.forEach(button => {
                     button.addEventListener("click", () => {

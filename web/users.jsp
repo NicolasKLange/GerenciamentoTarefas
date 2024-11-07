@@ -1,9 +1,3 @@
-<%-- 
-    Document   : users
-    Created on : 9 de out. de 2024, 07:29:20
-    Author     : nicolas_lange
---%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="entity.Usuario"%>
@@ -13,6 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Tela de usuários -->
         <title>Usuários</title>
         <link rel="stylesheet" href="css/homeStyle.css">
 
@@ -35,41 +30,32 @@
                     </ul>
                 </nav>
             </aside>
-
-            <!-- Conteúdo Principal -->
+            <!-- Conteúdo Principal da tela de usuários -->
             <main class="main-content">
-
-
                 <div class="dashboard-header">
                     <h2>Dashboard de Usuários</h2>
                 </div>
-
-                <!--Botão para adicionar tarefa-->
+                <!-- Botão para adicionar usuário -->
                 <header class="header">
                     <input type="text" placeholder="Pesquisar Usuário" class="search-bar"> 
                     <button class="add-task-button">Adicionar Usuário  +</button>        
                 </header>
-
+                <!-- Modal para incluir usuário -->
                 <dialog class="Janela-modal">
                     <form action="incluirUsuario.jsp">
-
                         <label for="nm">Nome</label>
                         <input type="text" class="nm" name="nome" placeholder="Nome">
-
                         <label for="email">Email</label>
                         <input type="email" class="email" name="email" placeholder="exemplo@gmail.com">
-
                         <label for="password">Senha</label>
                         <input type="password" class="password" name="senha" placeholder="Senha">
-
-
                         <label for="atv">Ativado?</label>
                         <select class="atv" name="ativacao" required>
                             <option value="" disabled selected>Selecione</option>
                             <option value="true">True</option>
                             <option value="false">False</option>
                         </select>
-
+                        <!-- Escolher nivel de permissão do usuário -->
                         <label for="np">Nível de Permissão</label>
                         <select class="np" name="nvpermissao"  required>
                             <option value="" disabled selected>Selecione</option>
@@ -78,23 +64,19 @@
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-
-
                         <input type="submit" value="Adicionar" class="submit">
                     </form>
-
                 </dialog>
-
+                <!-- Listar usuários cadastrados -->
                 <%
                     Usuario user = new Usuario();
 
                     List<Usuario> lista = new ArrayList<>();
                     lista = user.listarUsuario();
                 %>
-
+                <!-- Tabela dos usuários cadastrados -->
                 <table class="table">
                     <thead >
-
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nome</th>
@@ -102,10 +84,9 @@
                             <th scope="col">Ativado</th>
                             <th scope="col">Nivel de permissao</th>
                             <th scope="col">Excluir</th>
-
-
                         </tr>
                     </thead>
+                    <!-- Função para Listar -->
                     <% for (Usuario de : lista) {%>
                     <tbody>
                         <tr>
@@ -115,27 +96,21 @@
                             <td><%= de.getAtivacao_usuario()%></td>
                             <td><%= de.getNivel_permissao()%></td>
                             <td><a href="ExcluirUsuario.jsp?id=<%= de.getId_usuario()%>">excluir</a></td>
-
                     </tbody>
                     <% }%>
                 </table>
-
         </div>
     </section>
 </main>
 </div>
+<!-- Script para modal de incluir usuário -->
 
-<script src="js/script.js"></script>
 <script>const button = document.querySelector(".add-task-button");
     const modal = document.querySelector(".Janela-modal");
     const button_close = document.querySelector(".fechar-modal");
-
-
-
     button.onclick = function () {
         modal.showModal();
     };
-
     button_close.onclick = function () {
         modal.close();
     };

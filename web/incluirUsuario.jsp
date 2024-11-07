@@ -14,21 +14,18 @@
     </head>
     <body>
         <%
-        Usuario user = new Usuario();
-        
-        user.setNome_usuario(request.getParameter("nome"));
-        user.setEmail_usuario(request.getParameter("email"));
-        user.setSenha_usuario(request.getParameter("senha"));
-        user.setAtivacao_usuario(Boolean.valueOf(request.getParameter("ativacao")));
-            
-        user.setNivel_permissao(request.getParameter("nvpermissao"));
-        
-        if(user.incluirUsuario()){
-        response.sendRedirect("users.jsp");
-        }
-        
-        
-        
+            //Função para incluir novo usuário no sistema
+            Usuario user = new Usuario();
+
+            user.setNome_usuario(request.getParameter("nome"));
+            user.setEmail_usuario(request.getParameter("email"));
+            user.setSenha_usuario(request.getParameter("senha"));
+            user.setAtivacao_usuario(Boolean.valueOf(request.getParameter("ativacao")));
+
+            user.setNivel_permissao(request.getParameter("nvpermissao"));
+            if (user.incluirUsuario()) {
+                response.sendRedirect("users.jsp");
+            }
         %>
     </body>
 </html>

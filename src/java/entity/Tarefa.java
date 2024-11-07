@@ -9,8 +9,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//Classe de tarefa
 public class Tarefa {
-
     private int id_tarefa;
     private int id_tipo_tarefa;
     private String nome_usuario;
@@ -21,12 +21,10 @@ public class Tarefa {
     private Date data_inicio_tarefa;
     private Date data_fim_tarefa;
 
+    //Função para incluir tarefa
     public boolean incluirtarefa() throws ClassNotFoundException {
-
         Connection con = Conexao.conectar();
-
         String sql = "insert into tarefas( id_tipo_tarefa, id_usuario, desc_tarefa , data_inicio_tarefa , data_fim_tarefa) values( ? , ? , ? , ? , ?)";
-
         try {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setInt(1, this.getId_tipo_tarefa());
@@ -40,9 +38,9 @@ public class Tarefa {
         }
         return true;
     }
-
+    
+    //Função para listar tarefas
     public List<Tarefa> listarTarefas() throws ClassNotFoundException {
-
         List<Tarefa> ListTarefa = new ArrayList<>();
         Connection con = Conexao.conectar();
         String sql = "SELECT t.id_tarefa , tp.tipo_tarefa , t.status_tarefa ,u.nome_usuario , t.desc_tarefa , t.data_inicio_tarefa , t.data_fim_tarefa FROM tarefas t INNER JOIN tipo_tarefa tp ON t.id_tipo_tarefa = tp.id_tipo_tarefa  INNER JOIN usuario u on t.id_usuario = u.id_usuario order by t.data_fim_tarefa ";
@@ -65,12 +63,11 @@ public class Tarefa {
         }
         return ListTarefa;
     }
-
+    
+    //Função para excluir tarefa
     public boolean excluirTarefa() throws ClassNotFoundException {
-
         Connection con = Conexao.conectar();
         String sql = "delete from tarefas where id_tarefa = ?";
-
         try {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setInt(1, this.getId_tarefa());
@@ -81,13 +78,11 @@ public class Tarefa {
         }
         return true;
     }
-
+    
+    //Função para editar tarefa
     public boolean EditarTarefa() throws ClassNotFoundException {
-
         Connection con = Conexao.conectar();
-
         String sql = "UPDATE tarefas SET id_tipo_tarefa = ? , id_usuario = ? , desc_tarefa = ? , status_tarefa = ? , data_inicio_tarefa = ? , data_fim_tarefa = ?  WHERE id_tarefa = ?";
-
         try {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setInt(1, this.getId_tipo_tarefa());
@@ -103,7 +98,8 @@ public class Tarefa {
         }
         return true;
     }
-
+    
+    //Função para editar status da tarefa
     public boolean EditarStatus() throws ClassNotFoundException {
 
         Connection con = Conexao.conectar();
@@ -122,6 +118,7 @@ public class Tarefa {
         return true;
     }
 
+    // Área de getters e setters
     public int getId_tarefa() {
         return id_tarefa;
     }

@@ -1,7 +1,9 @@
+//Função para abrir modal
 function abrirModal() {
     document.getElementById('modalRedefinirSenha').style.display = 'block';
 }
 
+//Função para fechar modal
 function fecharModal() {
     document.getElementById('modalRedefinirSenha').style.display = 'none';
 }
@@ -12,5 +14,5 @@ window.onclick = function(event) {
     if (event.target === modal) {
         modal.style.display = "none";
     }
-    }
+  }
 
